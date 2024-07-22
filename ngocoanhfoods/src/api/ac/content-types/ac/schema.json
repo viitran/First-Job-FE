@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "acs",
+  "info": {
+    "singularName": "ac",
+    "pluralName": "acs",
+    "displayName": "ac"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

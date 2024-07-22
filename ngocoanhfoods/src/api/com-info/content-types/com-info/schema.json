@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "com_infos",
+  "info": {
+    "singularName": "com-info",
+    "pluralName": "com-infos",
+    "displayName": "com_info"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    }
+  }
+}
