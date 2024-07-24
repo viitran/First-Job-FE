@@ -1,6 +1,8 @@
-import style from "./style.css";
-
+import { Link } from "react-router-dom";
+import "./Header.css";
+import logo from '../../assets/header/LOGO.jpg';
 export default function Headers() {
+
   return (
     <>
       <div className="header-top d-flex">
