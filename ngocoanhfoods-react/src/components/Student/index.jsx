@@ -1,26 +1,29 @@
 import { useEffect, useState } from "react";
-import { getURL } from "../../services/common/api";
+import { getURLCategories } from "../../services/common/api";
+import { Link } from "react-router-dom";
 
 export default function Student() {
-  const [students, setStudents] = useState();
-
+  const [categories, setCategories] = useState();
   useEffect(() => {
     fetchApi();
-  }, [getURL]);
+  }, []);
 
   const fetchApi = async () => {
     try {
-      const response = await fetch(getURL);
+      const response = await fetch(getURLCategories);
       const data = await response.json();
-      setStudents(data);
+      setCategories(data);
     } catch (error) {
       console.log(error);
     }
   };
+
   const check = () => {
-    console.log(students.data);
+    console.log(categories.data);
   };
-  if (!students) return <div>loading...</div>;
+
+  if (!categories) return <div>loading....</div>;
+
   return (
     <>
       <div>
@@ -39,12 +42,15 @@ export default function Student() {
             </tr>
           </thead>
           <tbody>
-            {students.data.map((s) => (
+            {categories.data.map((s) => (
               <tr key={s.id}>
                 <td>{s.id}</td>
-                <td>{s.attributes.firstName}</td>
-                <td>{s.attributes.lastName}</td>
-                <td>{s.result}</td>
+                <td>
+                  {" "}
+                  <Link to={"/"}>{s.attributes.name}</Link>
+                </td>
+                {/* <td>{s.attributes.lastName}</td> */}
+                {/* <td>{s.result}</td> */}
               </tr>
             ))}
           </tbody>

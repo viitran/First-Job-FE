@@ -1,1 +1,1 @@
-export const getURL = 'http://localhost:1337/api/students?populate=*'
+export const getURLCategories = 'http://localhost:1337/api/categories'
