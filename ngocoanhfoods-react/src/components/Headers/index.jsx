@@ -1,12 +1,30 @@
 import { Link } from "react-router-dom";
 import "./Header.css";
 import logo from '../../assets/header/LOGO.jpg';
+import { useEffect, useState } from "react";
 
 export default function Headers() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset;
+      // Kiểm tra nếu người dùng đã cuộn xuống từ đầu trang, thì đặt isScrolled thành true
+      setIsScrolled(scrollTop > 0);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    // Xóa bỏ event listener khi component unmount
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    console.log(isScrolled);
+  }, [isScrolled])
 
   return (
-    <>
-      <div className="header-container">
+    <div className="wide-nav">
+      <div className="header-container fixed-top-header">
         <div className="d-flex header-top">
           <div className="col-7 d-flex justify-content-center">
             <div className="d-flex justify-content-center align-items-center">
@@ -38,7 +56,9 @@ export default function Headers() {
             <div className="title-menu">
               <div className="d-flex">
                 <p>Sản Phẩm</p>
-                <span className="material-symbols-outlined">chevron_right</span>
+                <div className="d-flex justify-content-center align-items-center">
+                  <span className="material-symbols-outlined">chevron_right</span>
+                </div>
               </div>
               <div className="dropdown-menu-content">
                 <div className="mt-3 mb-2 ps-3">
@@ -62,9 +82,11 @@ export default function Headers() {
               </div>
             </div>
             <div className="d-flex title-menu">
-            <div className="d-flex">
+              <div className="d-flex">
                 <p>Chính sách</p>
-                <span className="material-symbols-outlined">chevron_right</span>
+                <div className="d-flex justify-content-center align-items-center">
+                  <span className="material-symbols-outlined">chevron_right</span>
+                </div>
               </div>
               <div className="dropdown-menu-content">
                 <div className="mt-3 mb-2 ps-3">
@@ -89,11 +111,14 @@ export default function Headers() {
             </div>
             <div className="d-flex title-menu">
               <p>Liên hệ</p>
-              <span className="material-symbols-outlined">chevron_right</span>
+              <div className="d-flex justify-content-center align-items-center">
+                <span className="material-symbols-outlined">chevron_right</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </>
+      <div className="header-layer" style={{ height: '120px' }}></div>
+    </div>
   );
 }
