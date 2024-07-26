@@ -788,42 +788,12 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiBlogBlog extends Schema.CollectionType {
-  collectionName: 'blogs';
-  info: {
-    singularName: 'blog';
-    pluralName: 'blogs';
-    displayName: 'Blog';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    Title: Attribute.String;
-    content: Attribute.RichText &
-      Attribute.Required &
-      Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'toolbar';
-        }
-      >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::blog.blog', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 export interface ApiCategoryCategory extends Schema.CollectionType {
   collectionName: 'categories';
   info: {
     singularName: 'category';
     pluralName: 'categories';
-    displayName: 'Category';
+    displayName: 'Danh m\u1EE5c s\u1EA3n ph\u1EA9m';
     description: '';
   };
   options: {
@@ -854,32 +824,31 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
-export interface ApiCorpInfoCorpInfo extends Schema.CollectionType {
-  collectionName: 'corp_infos';
+export interface ApiChinhSachChinhSach extends Schema.CollectionType {
+  collectionName: 'chinh_saches';
   info: {
-    singularName: 'corp-info';
-    pluralName: 'corp-infos';
-    displayName: 'Corp-info';
+    singularName: 'chinh-sach';
+    pluralName: 'chinh-saches';
+    displayName: 'Ch\u00EDnh s\u00E1ch';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String & Attribute.Required;
-    address: Attribute.String & Attribute.Required;
-    phone: Attribute.String;
-    email: Attribute.Email;
+    url: Attribute.String;
+    title: Attribute.String;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::corp-info.corp-info',
+      'api::chinh-sach.chinh-sach',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::corp-info.corp-info',
+      'api::chinh-sach.chinh-sach',
       'oneToOne',
       'admin::user'
     > &
@@ -887,28 +856,38 @@ export interface ApiCorpInfoCorpInfo extends Schema.CollectionType {
   };
 }
 
-export interface ApiPoliciePolicie extends Schema.CollectionType {
-  collectionName: 'policies';
+export interface ApiGioiThieuGioiThieu extends Schema.CollectionType {
+  collectionName: 'gioi_thieus';
   info: {
-    singularName: 'policie';
-    pluralName: 'policies';
-    displayName: 'Policies';
+    singularName: 'gioi-thieu';
+    pluralName: 'gioi-thieus';
+    displayName: 'Gi\u1EDBi thi\u1EC7u';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
-    Title: Attribute.String;
+    title: Attribute.String;
+    content: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::policie.policie',
+      'api::gioi-thieu.gioi-thieu',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::policie.policie',
+      'api::gioi-thieu.gioi-thieu',
       'oneToOne',
       'admin::user'
     > &
@@ -921,7 +900,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
   info: {
     singularName: 'product';
     pluralName: 'products';
-    displayName: 'Product';
+    displayName: 'S\u1EA3n ph\u1EA9m';
     description: '';
   };
   options: {
@@ -964,7 +943,8 @@ export interface ApiProjectProject extends Schema.CollectionType {
   info: {
     singularName: 'project';
     pluralName: 'projects';
-    displayName: 'Project';
+    displayName: 'D\u1EF1 \u00E1n';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -995,6 +975,79 @@ export interface ApiProjectProject extends Schema.CollectionType {
   };
 }
 
+export interface ApiSildeSilde extends Schema.CollectionType {
+  collectionName: 'sildes';
+  info: {
+    singularName: 'silde';
+    pluralName: 'sildes';
+    displayName: 'Silde';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    content: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::silde.silde',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::silde.silde',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiThongTinCongTyThongTinCongTy extends Schema.SingleType {
+  collectionName: 'thong_tin_cong_ties';
+  info: {
+    singularName: 'thong-tin-cong-ty';
+    pluralName: 'thong-tin-cong-ties';
+    displayName: 'Th\u00F4ng tin c\u00F4ng ty';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String;
+    address: Attribute.String;
+    phone: Attribute.String;
+    link_facebook: Attribute.String;
+    link_shopee: Attribute.String;
+    email: Attribute.Email;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::thong-tin-cong-ty.thong-tin-cong-ty',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::thong-tin-cong-ty.thong-tin-cong-ty',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1013,12 +1066,13 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::blog.blog': ApiBlogBlog;
       'api::category.category': ApiCategoryCategory;
-      'api::corp-info.corp-info': ApiCorpInfoCorpInfo;
-      'api::policie.policie': ApiPoliciePolicie;
+      'api::chinh-sach.chinh-sach': ApiChinhSachChinhSach;
+      'api::gioi-thieu.gioi-thieu': ApiGioiThieuGioiThieu;
       'api::product.product': ApiProductProduct;
       'api::project.project': ApiProjectProject;
+      'api::silde.silde': ApiSildeSilde;
+      'api::thong-tin-cong-ty.thong-tin-cong-ty': ApiThongTinCongTyThongTinCongTy;
     }
   }
 }
