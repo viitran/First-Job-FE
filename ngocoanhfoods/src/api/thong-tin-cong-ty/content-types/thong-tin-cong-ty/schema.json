@@ -1,0 +1,33 @@
+{
+  "kind": "singleType",
+  "collectionName": "thong_tin_cong_ties",
+  "info": {
+    "singularName": "thong-tin-cong-ty",
+    "pluralName": "thong-tin-cong-ties",
+    "displayName": "Thông tin công ty"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "link_facebook": {
+      "type": "string"
+    },
+    "link_shopee": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    }
+  }
+}

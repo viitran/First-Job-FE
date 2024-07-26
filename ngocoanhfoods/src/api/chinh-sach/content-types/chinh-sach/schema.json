@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "chinh_saches",
+  "info": {
+    "singularName": "chinh-sach",
+    "pluralName": "chinh-saches",
+    "displayName": "Chính sách"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "url": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

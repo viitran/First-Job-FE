@@ -590,6 +590,53 @@ export interface PluginContentReleasesReleaseAction
   };
 }
 
+export interface PluginI18NLocale extends Schema.CollectionType {
+  collectionName: 'i18n_locale';
+  info: {
+    singularName: 'locale';
+    pluralName: 'locales';
+    collectionName: 'locales';
+    displayName: 'Locale';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 50;
+        },
+        number
+      >;
+    code: Attribute.String & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUsersPermissionsPermission
   extends Schema.CollectionType {
   collectionName: 'up_permissions';
@@ -741,46 +788,35 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface PluginI18NLocale extends Schema.CollectionType {
-  collectionName: 'i18n_locale';
+export interface ApiCategoryCategory extends Schema.CollectionType {
+  collectionName: 'categories';
   info: {
-    singularName: 'locale';
-    pluralName: 'locales';
-    collectionName: 'locales';
-    displayName: 'Locale';
+    singularName: 'category';
+    pluralName: 'categories';
+    displayName: 'Danh m\u1EE5c s\u1EA3n ph\u1EA9m';
     description: '';
   };
   options: {
     draftAndPublish: false;
   };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
-  };
   attributes: {
-    name: Attribute.String &
-      Attribute.SetMinMax<
-        {
-          min: 1;
-          max: 50;
-        },
-        number
-      >;
-    code: Attribute.String & Attribute.Unique;
+    name: Attribute.String;
+    products: Attribute.Relation<
+      'api::category.category',
+      'manyToMany',
+      'api::product.product'
+    >;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'plugin::i18n.locale',
+      'api::category.category',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'plugin::i18n.locale',
+      'api::category.category',
       'oneToOne',
       'admin::user'
     > &
@@ -788,76 +824,226 @@ export interface PluginI18NLocale extends Schema.CollectionType {
   };
 }
 
-export interface ApiAcAc extends Schema.SingleType {
-  collectionName: 'acs';
+export interface ApiChinhSachChinhSach extends Schema.CollectionType {
+  collectionName: 'chinh_saches';
   info: {
-    singularName: 'ac';
-    pluralName: 'acs';
-    displayName: 'ac';
+    singularName: 'chinh-sach';
+    pluralName: 'chinh-saches';
+    displayName: 'Ch\u00EDnh s\u00E1ch';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
+    url: Attribute.String;
+    title: Attribute.String;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::ac.ac', 'oneToOne', 'admin::user'> &
+    createdBy: Attribute.Relation<
+      'api::chinh-sach.chinh-sach',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
-    updatedBy: Attribute.Relation<'api::ac.ac', 'oneToOne', 'admin::user'> &
+    updatedBy: Attribute.Relation<
+      'api::chinh-sach.chinh-sach',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
 
-export interface ApiComInfoComInfo extends Schema.SingleType {
-  collectionName: 'com_infos';
+export interface ApiGioiThieuGioiThieu extends Schema.CollectionType {
+  collectionName: 'gioi_thieus';
   info: {
-    singularName: 'com-info';
-    pluralName: 'com-infos';
-    displayName: 'com_info';
+    singularName: 'gioi-thieu';
+    pluralName: 'gioi-thieus';
+    displayName: 'Gi\u1EDBi thi\u1EC7u';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    content: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    description: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::gioi-thieu.gioi-thieu',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::gioi-thieu.gioi-thieu',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProductProduct extends Schema.CollectionType {
+  collectionName: 'products';
+  info: {
+    singularName: 'product';
+    pluralName: 'products';
+    displayName: 'S\u1EA3n ph\u1EA9m';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    categories: Attribute.Relation<
+      'api::product.product',
+      'manyToMany',
+      'api::category.category'
+    >;
+    description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProjectProject extends Schema.CollectionType {
+  collectionName: 'projects';
+  info: {
+    singularName: 'project';
+    pluralName: 'projects';
+    displayName: 'D\u1EF1 \u00E1n';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::project.project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSildeSilde extends Schema.CollectionType {
+  collectionName: 'sildes';
+  info: {
+    singularName: 'silde';
+    pluralName: 'sildes';
+    displayName: 'Silde';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    description: Attribute.Text;
+    content: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::silde.silde',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::silde.silde',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiThongTinCongTyThongTinCongTy extends Schema.SingleType {
+  collectionName: 'thong_tin_cong_ties';
+  info: {
+    singularName: 'thong-tin-cong-ty';
+    pluralName: 'thong-tin-cong-ties';
+    displayName: 'Th\u00F4ng tin c\u00F4ng ty';
   };
   options: {
     draftAndPublish: false;
   };
   attributes: {
     name: Attribute.String;
+    address: Attribute.String;
+    phone: Attribute.String;
+    link_facebook: Attribute.String;
+    link_shopee: Attribute.String;
     email: Attribute.Email;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::com-info.com-info',
+      'api::thong-tin-cong-ty.thong-tin-cong-ty',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::com-info.com-info',
+      'api::thong-tin-cong-ty.thong-tin-cong-ty',
       'oneToOne',
       'admin::user'
     > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiVbVb extends Schema.SingleType {
-  collectionName: 'vbs';
-  info: {
-    singularName: 'vb';
-    pluralName: 'vbs';
-    displayName: 'vb';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    content: Attribute.RichText;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::vb.vb', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::vb.vb', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -876,13 +1062,17 @@ declare module '@strapi/types' {
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
+      'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'plugin::i18n.locale': PluginI18NLocale;
-      'api::ac.ac': ApiAcAc;
-      'api::com-info.com-info': ApiComInfoComInfo;
-      'api::vb.vb': ApiVbVb;
+      'api::category.category': ApiCategoryCategory;
+      'api::chinh-sach.chinh-sach': ApiChinhSachChinhSach;
+      'api::gioi-thieu.gioi-thieu': ApiGioiThieuGioiThieu;
+      'api::product.product': ApiProductProduct;
+      'api::project.project': ApiProjectProject;
+      'api::silde.silde': ApiSildeSilde;
+      'api::thong-tin-cong-ty.thong-tin-cong-ty': ApiThongTinCongTyThongTinCongTy;
     }
   }
 }
