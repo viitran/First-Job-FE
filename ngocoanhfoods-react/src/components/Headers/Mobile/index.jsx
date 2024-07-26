@@ -60,16 +60,20 @@ export default function HeaderMobile() {
             <div className={`content-header-m ${isContentOpen ? 'visible' : ''}`}>
                 <div className="d-flex login-m-section">
                     <div className="col-9 d-flex align-items-center ps-3">
-                        <div className="col-3">
+                        <div className="col-12 d-flex">
                             <svg style={{ color: '#f0f0f0' }} xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
                                 <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                                 <path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
                             </svg>
-                        </div>
-                        <div className="col-9 d-flex align-items-center">
-                            <Link to={"/a"} style={{ color: '#f0f0f0', textDecoration: 'none' }}>Đăng Nhập</Link>
-                            <span style={{ borderRight: '2px solid #f0f0f0', height: '18px' }} className="mx-2"></span>
-                            <Link to={"/a"} style={{ color: '#f0f0f0', textDecoration: 'none' }}>Đăng Ký</Link>
+                            <div className="ms-3 d-flex align-items-center" style={{ display: 'inline-block' }}>
+                                <Link to={"/login"} style={{ color: '#f0f0f0', textDecoration: 'none', fontSize: '15px' }}>Đăng Nhập</Link>
+                                <span style={{ borderRight: '2px solid #f0f0f0', height: '17px' }} className="mx-2"></span>
+                                <Link to={"/signin"} style={{ color: '#f0f0f0', textDecoration: 'none', fontSize: '15px' }}>Đăng Ký</Link>
+                            </div>
+                            {/* <div className="ms-3 info-sb" style={{display:'inline-block'}}>
+                                <p>khanh</p>
+                                <Link to={"/logout"}>Đăng xuất</Link>
+                            </div> */}
                         </div>
                     </div>
                     <div className="col-3 d-flex justify-content-end pt-2 pe-2 align-items-baseline">
@@ -81,6 +85,14 @@ export default function HeaderMobile() {
                     </div>
                 </div>
                 <div className="sb-m-content">
+                    <div className="px-3 py-3 d-flex">
+                        <input type="text" placeholder="Tìm kiếm sản phẩm" className="sideBar-search" />
+                        <button className="sideBar-search-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                            </svg>
+                        </button>
+                    </div>
                     <div className="px-3">
                         <Link to={"/cart"}>Giỏ Hàng</Link>
                         <Link to={"/"}>Trang chủ</Link>
@@ -90,7 +102,7 @@ export default function HeaderMobile() {
                                 style={{ padding: '10px 0px 10px 0px', borderBottom: '1px solid rgb(228, 228, 228)', cursor: 'pointer' }}>
                                 <p className="col-10">Sản Phẩm</p>
                                 <div className="col-2 d-flex justify-content-center align-items-center">
-                                    <span className="material-symbols-outlined" style={{ color: '#257140' }}>chevron_right</span>
+                                    <span className="material-symbols-outlined" style={{ color: 'rgb(37 113 64 / 85%)' }}>chevron_right</span>
                                 </div>
                             </div>
                             <div className="list-exp-m">
@@ -105,7 +117,7 @@ export default function HeaderMobile() {
                                 style={{ padding: '10px 0px 10px 0px', borderBottom: '1px solid rgb(228, 228, 228)', cursor: 'pointer' }}>
                                 <p className="col-10">Chính sách</p>
                                 <div className="col-2 d-flex justify-content-center align-items-center">
-                                    <span className="material-symbols-outlined" style={{ color: '#257140' }}>chevron_right</span>
+                                    <span className="material-symbols-outlined" style={{ color: 'rgb(37 113 64 / 85%)' }}>chevron_right</span>
                                 </div>
                             </div>
                             <div className="list-exp-m">
