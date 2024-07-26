@@ -1,8 +1,9 @@
 import { Routes, BrowserRouter, Route } from "react-router-dom";
 import "./App.css";
-import Headers from "./components/Headers";
 import "bootstrap/dist/css/bootstrap.css";
 import { Helmet } from "react-helmet";
+import HomePage from "./components/HomePage";
+import Master from "./components/Master";
 function App() {
   return (
     <>
@@ -11,7 +12,9 @@ function App() {
       </Helmet>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Headers />} />
+          <Route path="/" element={<Master />}>
+            <Route path="/" element={<HomePage />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </>

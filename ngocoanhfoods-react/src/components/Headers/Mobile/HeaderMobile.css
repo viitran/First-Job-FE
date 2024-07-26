@@ -1,0 +1,124 @@
+.header-mobile {
+    height: 65px;
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.expand-btn {
+    padding: 9px 11px 9px 11px;
+    background-color: transparent;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.content-header-m {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    overflow-y: scroll;
+    visibility: hidden;
+    transform: translateX(-100%);
+    transition: visibility 0.5s ease, transform 0.5s ease;
+    z-index: 1;
+}
+
+.content-header-m.visible {
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.disable-scroll {
+    overflow: hidden;
+}
+
+.visible {
+    visibility: visible;
+}
+
+.login-m-section {
+    /* #71A84D */
+    background-color: #257140;
+    height: 100px;
+}
+
+.login-m-section p {
+    margin-bottom: 0;
+}
+
+.quantity-cart-m {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: rgb(240, 0, 0);
+    font-size: 10px;
+    right: -4px;
+    top: -4px;
+    color: white;
+    padding-top: 2px;
+}
+
+.sb-m-content a {
+    text-decoration: none;
+    color: #257140;
+    display: block;
+    padding: 10px 0px 10px 0px;
+    border-bottom: 1px solid rgb(228, 228, 228);
+}
+
+.sb-m-content p {
+    margin-bottom: 0;
+    color: #257140; 
+}
+.list-exp-m {
+    display: none;
+}
+.title-exp-m.show-expand + .list-exp-m {
+    display: block;
+}
+.list-exp-m a {
+    padding-left: 30px;
+}
+.header-mobile-container, .header-layer-m {
+    display: none;
+}
+@media screen and (max-width: 992px) {
+    .header-mobile-container, .header-layer-m {
+        display: block;
+    }   
+}
+.sideBar-search{
+    padding: 6px 10px 5px 10px;
+    background-color: #e8e8e8;
+    border: 2px solid #e8e8e8;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 100%;
+}
+.sideBar-search:focus {
+    outline: none;
+}
+.sideBar-search-btn {
+    background-color: #257140;
+    border: 1px solid #257140;
+    padding: 0px 12px 2px 12px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+}
+.sideBar-search-btn svg {
+    color: rgb(240, 240, 240);
+}
+.info-sb p, .info-sb a {
+    text-decoration: none;
+    font-size: 15px;
+    color: #f0f0f0;
+}
