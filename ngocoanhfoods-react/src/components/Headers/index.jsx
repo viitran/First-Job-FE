@@ -57,64 +57,66 @@ export default function Headers() {
             </div>
           </div>
         </div>
-        <div className="header-nav">
-          <div className="col-xxl-3 col-xl-2 col-lg-2 col-3 d-flex justify-content-end align-items-center">
-            <img src={logo} alt="logo" height="60px" />
-          </div>
-          <div className="col-xxl-9 col-xl-10 col-lg-10 col-9 d-flex align-items-center ps-5">
-            <div className="d-flex title-menu">
-              <p>Trang Chủ</p>
+        <div className="d-flex justify-content-center" style={{backgroundColor:'white', boxShadow:'0 0 10px rgba(0, 0, 0, 0.2)'}}>
+          <div className="header-nav container-fl">
+            <div className="col-xxl-2 col-xl-2 col-lg-2 col-3 d-flex justify-content-start align-items-center">
+              <img src={logo} alt="logo" height="60px"/>
             </div>
-            <div className="d-flex title-menu">
-              <p>Giới Thiệu</p>
-            </div>
-            <div className="title-menu">
-              <div className="d-flex">
-                <p>Sản Phẩm</p>
-                <div className="d-flex justify-content-center align-items-center">
-                  <span className="material-symbols-outlined">chevron_right</span>
-                </div>
+            <div className="col-xxl-10 col-xl-10 col-lg-10 col-9 d-flex align-items-center">
+              <div className="d-flex title-menu">
+                <p>Trang Chủ</p>
               </div>
-              <div className="dropdown-menu-content">
-                {categories.data.map((cate) => (
-                  <div className="mt-3 mb-2 ps-3" key={cate.id}>
-                    <Link to={"/"}>{cate.attributes.name}</Link>
+              <div className="d-flex title-menu">
+                <p>Giới Thiệu</p>
+              </div>
+              <div className="title-menu">
+                <div className="d-flex">
+                  <p>Sản Phẩm</p>
+                  <div className="d-flex justify-content-center align-items-center">
+                    <span className="material-symbols-outlined">chevron_right</span>
                   </div>
-                ))}
+                </div>
+                <div className="dropdown-menu-content">
+                  {categories.data.map((cate) => (
+                    <div className="mt-3 mb-2 ps-3" key={cate.id}>
+                      <Link to={"/"}>{cate.attributes.name}</Link>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-            <div className="d-flex title-menu">
-              <div className="d-flex">
-                <p>Chính sách</p>
+              <div className="d-flex title-menu">
+                <div className="d-flex">
+                  <p>Chính sách</p>
+                  <div className="d-flex justify-content-center align-items-center">
+                    <span className="material-symbols-outlined">chevron_right</span>
+                  </div>
+                </div>
+                <div className="dropdown-menu-content">
+                  <div className="mt-3 mb-2 ps-3">
+                    <Link to={"/"}>Chính sách bảo mật</Link>
+                  </div>
+                  <div className="mt-3 mb-2 ps-3">
+                    <Link to={"/"}>Chính sách vận chuyển</Link>
+                  </div>
+                  <div className="mt-3 mb-2 ps-3">
+                    <Link to={"/"}>Quy định sử dụng</Link>
+                  </div>
+                  <div className="mt-3 mb-2 ps-3">
+                    <Link to={"/"}>Hướng dẫn mua hàng</Link>
+                  </div>
+                </div>
+              </div>
+              <div className="d-flex title-menu">
+                <p>Blog Sức Khỏe Và Sắc Đẹp</p>
+              </div>
+              <div className="d-flex title-menu">
+                <p>Dự Án Sữa Hạt Yêu Thương</p>
+              </div>
+              <div className="d-flex title-menu">
+                <p>Liên hệ</p>
                 <div className="d-flex justify-content-center align-items-center">
                   <span className="material-symbols-outlined">chevron_right</span>
                 </div>
-              </div>
-              <div className="dropdown-menu-content">
-                <div className="mt-3 mb-2 ps-3">
-                  <Link to={"/"}>Chính sách bảo mật</Link>
-                </div>
-                <div className="mt-3 mb-2 ps-3">
-                  <Link to={"/"}>Chính sách vận chuyển</Link>
-                </div>
-                <div className="mt-3 mb-2 ps-3">
-                  <Link to={"/"}>Quy định sử dụng</Link>
-                </div>
-                <div className="mt-3 mb-2 ps-3">
-                  <Link to={"/"}>Hướng dẫn mua hàng</Link>
-                </div>
-              </div>
-            </div>
-            <div className="d-flex title-menu">
-              <p>Blog Sức Khỏe Và Sắc Đẹp</p>
-            </div>
-            <div className="d-flex title-menu">
-              <p>Dự Án Sữa Hạt Yêu Thương</p>
-            </div>
-            <div className="d-flex title-menu">
-              <p>Liên hệ</p>
-              <div className="d-flex justify-content-center align-items-center">
-                <span className="material-symbols-outlined">chevron_right</span>
               </div>
             </div>
           </div>
