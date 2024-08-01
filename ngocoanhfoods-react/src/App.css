@@ -37,5 +37,6 @@
   }
 }
 body {
-  font-family: "Open Sans", sans-serif !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  overflow-x: hidden;
 }

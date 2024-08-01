@@ -24,7 +24,7 @@
     visibility: hidden;
     transform: translateX(-100%);
     transition: visibility 0.5s ease, transform 0.5s ease;
-    z-index: 1;
+    z-index: 5;
 }
 
 .content-header-m.visible {
@@ -121,4 +121,8 @@
     text-decoration: none;
     font-size: 15px;
     color: #f0f0f0;
+}
+.header-mobile-container {
+    position: relative;
+    z-index: 4;
 }
