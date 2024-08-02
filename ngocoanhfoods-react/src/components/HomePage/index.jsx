@@ -32,12 +32,13 @@ import c3 from "../../assets/homePage/certification/c3.jpg";
 import c4 from "../../assets/homePage/certification/c4.jpg";
 import c5 from "../../assets/homePage/certification/c5.jpg";
 import c6 from "../../assets/homePage/certification/c6.jpg";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export default function HomePage() {
 
     const categorySwiperRef = useRef();
     const navigate = useNavigate();
+    const [certificationCurrent, setCertificationCurrent] = useState();
 
     const certification = [
         { id: "1c", url: c1 },
@@ -161,7 +162,7 @@ export default function HomePage() {
                 </div>
             </div>
 
-            <div className="q-home d-flex container-fl" style={{ flexWrap: 'wrap'}}>
+            <div className="q-home d-flex container-fl" style={{ flexWrap: 'wrap' }}>
                 <div className="col-lg-7 col-12">
                     <h2 className="rps-title1-h" style={{ fontWeight: 'bold', lineHeight: 'normal' }}>TẠI SAO KHÁCH HÀNG <br />
                         <span style={{ color: 'rgb(51 167 93)' }}> LỰA CHỌN</span> NGỌC OANH FOODS</h2>
@@ -286,120 +287,126 @@ export default function HomePage() {
 
             </div>
 
-            <div className="container-fl box-container-h">
-                <p style={{ textAlign: 'center', color: 'rgb(51 167 93)', fontWeight: '600' }} className="mb-5 rps-title2-h">Các sản phẩm nổi bật</p>
-                <div className="list-cate-crs">
-                    <Swiper
-                        onSwiper={(swiper) => { categorySwiperRef.current = swiper }}
-                        slidesPerView={2}
-                        spaceBetween={0}
-                        // loop={true}
-                        // autoplay={{
-                        //     delay: 2500,
-                        //     disableOnInteraction: false,
-                        // }}
-                        speed={1100}
-                        modules={[Navigation, Autoplay]}
-                        breakpoints={{
-                            380: {
-                                slidesPerView: 2,
-                                spaceBetween: 0
-                            },
-                            420: {
-                                slidesPerView: 2,
-                                spaceBetween: 0
-                            },
-                            768: {
-                                slidesPerView: 3,
-                                spaceBetween: 0
-                            },
-                            1024: {
-                                slidesPerView: 4,
-                                spaceBetween: 0
-                            }
-                        }}
-                    >
-                        <SwiperSlide>
-                            <div className="category-h" onClick={() => { navigate("/to") }}>
-                                <div className="d-flex justify-content-center">
-                                    <img src={ct1} alt="..." />
-                                </div>
-                                <div>
-                                    <p className="mt-4 mb-3 mx-2" style={{ textAlign: 'center', fontWeight: 'bold' }}>Tất cả sản phẩm</p>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="category-h" onClick={() => { navigate("/") }}>
-                                <div className="d-flex justify-content-center">
-                                    <img src={ct1} alt="..." />
-                                </div>
-                                <div>
-                                    <p className="mt-4 mb-3 mx-2" style={{ textAlign: 'center', fontWeight: 'bold' }}>Bánh hạt dinh dưỡng</p>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="category-h" onClick={() => { navigate("/") }}>
-                                <div className="d-flex justify-content-center">
-                                    <img src={ct2} alt="..." />
-                                </div>
-                                <div>
-                                    <p className="mt-4 mb-3 mx-2" style={{ textAlign: 'center', fontWeight: 'bold' }}>Hạt dinh dưỡng</p>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="category-h" onClick={() => { navigate("/") }}>
-                                <div className="d-flex justify-content-center">
-                                    <img src={ct3} alt="..." />
-                                </div>
-                                <div>
-                                    <p className="mt-4 mb-3 mx-2" style={{ textAlign: 'center', fontWeight: 'bold' }}>Hạt làm sữa</p>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="category-h" onClick={() => { navigate("/") }}>
-                                <div className="d-flex justify-content-center">
-                                    <img src={ct4} alt="..." />
-                                </div>
-                                <div>
-                                    <p className="mt-4 mb-3 mx-2" style={{ textAlign: 'center', fontWeight: 'bold' }}>Ngũ cốc</p>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="category-h" onClick={() => { navigate("/") }}>
-                                <div className="d-flex justify-content-center">
-                                    <img src={ct5} alt="..." />
-                                </div>
-                                <div>
-                                    <p className="mt-4 mb-3 mx-2" style={{ textAlign: 'center', fontWeight: 'bold' }}>Rong biển sấy</p>
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <div className="category-h" onClick={() => { navigate("/") }}>
-                                <div className="d-flex justify-content-center">
-                                    <img src={ct6} alt="..." />
-                                </div>
-                                <div>
-                                    <p className="mt-4 mb-3 mx-2" style={{ textAlign: 'center', fontWeight: 'bold' }}>Trái cây sấy</p>
-                                </div>
-                            </div>
-                        </SwiperSlide>
+            <div className="container-fl">
+                <p style={{ textAlign: 'center', color: 'rgb(51 167 93)', fontWeight: '600' }} className="mb-4 rps-title2-h">Các sản phẩm nổi bật</p>
+            </div>
 
-                    </Swiper>
-                </div>
-                <div className="d-flex justify-content-center align-items-center mt-4">
-                    <button className="btn-more-cate" onClick={() => { categorySwiperRef.current.slideNext() }}>Xem thêm
-                        <span className="material-symbols-outlined">chevron_right</span>
-                    </button>
+            <div style={{width:'100%', overflow:'hidden'}}>
+                <div className="container-fl box-container-h">
+                    <div className="list-cate-crs">
+                        <Swiper
+                            onSwiper={(swiper) => { categorySwiperRef.current = swiper }}
+                            slidesPerView={2}
+                            spaceBetween={0}
+                            // loop={true}
+                            // autoplay={{
+                            //     delay: 2500,
+                            //     disableOnInteraction: false,
+                            // }}
+                            speed={1100}
+                            modules={[Navigation, Autoplay]}
+                            breakpoints={{
+                                380: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 0
+                                },
+                                420: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 0
+                                },
+                                768: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 0
+                                },
+                                1024: {
+                                    slidesPerView: 4,
+                                    spaceBetween: 0
+                                }
+                            }}
+                        >
+                            <SwiperSlide>
+                                <div className="category-h" onClick={() => { navigate("/to") }}>
+                                    <div className="d-flex justify-content-center">
+                                        <img src={ct1} alt="..." />
+                                    </div>
+                                    <div>
+                                        <p className="mt-4 mb-3 mx-2" style={{ textAlign: 'center', fontWeight: 'bold' }}>Tất cả sản phẩm</p>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className="category-h" onClick={() => { navigate("/") }}>
+                                    <div className="d-flex justify-content-center">
+                                        <img src={ct1} alt="..." />
+                                    </div>
+                                    <div>
+                                        <p className="mt-4 mb-3 mx-2" style={{ textAlign: 'center', fontWeight: 'bold' }}>Bánh hạt dinh dưỡng</p>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className="category-h" onClick={() => { navigate("/") }}>
+                                    <div className="d-flex justify-content-center">
+                                        <img src={ct2} alt="..." />
+                                    </div>
+                                    <div>
+                                        <p className="mt-4 mb-3 mx-2" style={{ textAlign: 'center', fontWeight: 'bold' }}>Hạt dinh dưỡng</p>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className="category-h" onClick={() => { navigate("/") }}>
+                                    <div className="d-flex justify-content-center">
+                                        <img src={ct3} alt="..." />
+                                    </div>
+                                    <div>
+                                        <p className="mt-4 mb-3 mx-2" style={{ textAlign: 'center', fontWeight: 'bold' }}>Hạt làm sữa</p>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className="category-h" onClick={() => { navigate("/") }}>
+                                    <div className="d-flex justify-content-center">
+                                        <img src={ct4} alt="..." />
+                                    </div>
+                                    <div>
+                                        <p className="mt-4 mb-3 mx-2" style={{ textAlign: 'center', fontWeight: 'bold' }}>Ngũ cốc</p>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className="category-h" onClick={() => { navigate("/") }}>
+                                    <div className="d-flex justify-content-center">
+                                        <img src={ct5} alt="..." />
+                                    </div>
+                                    <div>
+                                        <p className="mt-4 mb-3 mx-2" style={{ textAlign: 'center', fontWeight: 'bold' }}>Rong biển sấy</p>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                            <SwiperSlide>
+                                <div className="category-h" onClick={() => { navigate("/") }}>
+                                    <div className="d-flex justify-content-center">
+                                        <img src={ct6} alt="..." />
+                                    </div>
+                                    <div>
+                                        <p className="mt-4 mb-3 mx-2" style={{ textAlign: 'center', fontWeight: 'bold' }}>Trái cây sấy</p>
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+
+                        </Swiper>
+                    </div>
+                    <div className="d-flex justify-content-center align-items-center mt-4">
+                        <button className="btn-more-cate" onClick={() => { categorySwiperRef.current.slideNext() }}>Xem thêm
+                            <span className="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <div className="q-home d-flex container-fl" style={{ flexWrap: 'wrap'}}>
+
+            <div className="q-home d-flex container-fl" style={{ flexWrap: 'wrap' }}>
                 <div className="col-lg-7 col-12">
                     <h2 className="rps-title1-h" style={{ fontWeight: 'bold', lineHeight: 'normal' }}><span style={{ color: 'rgb(51 167 93)' }}>QUY TRÌNH </span>SẢN XUẤT<br />
                         TẠI NGỌC OANH FOODS</h2>
@@ -562,7 +569,7 @@ export default function HomePage() {
 
 
             <div className="container-fl">
-                
+
                 <p className="rps-title2-h mb-5" style={{ textAlign: 'center', textTransform: 'uppercase', fontWeight: '600', color: 'rgb(51, 167, 93)' }}>Các chứng chỉ đạt được</p>
                 <Swiper
                     slidesPerView={2}
@@ -602,10 +609,10 @@ export default function HomePage() {
                     ))}
 
                 </Swiper>
-            
+
             </div>
 
-           
+
 
 
 
@@ -629,7 +636,9 @@ export default function HomePage() {
                 <p>kj</p>
             </div>
 
-
+            {/* <div className="modal-certification">
+                <img src={c1} alt="..." style={{width:'50%', height:'auto'}}/>
+            </div> */}
         </div>
     )
 }
