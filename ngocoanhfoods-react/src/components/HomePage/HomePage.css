@@ -17,6 +17,7 @@
 
 .banner-home {
     background-color: #cfffe0;
+    margin-bottom: 80px;
 }
 
 .banner-home p {
@@ -41,13 +42,30 @@
 
 @media (min-width: 1200px) {
     .container-fl {
-        max-width: 1254px;
+        /* max-width: 1254px; */
+        max-width: 1170px;
     }
 }
 
+.q-home {
+    margin-bottom: 100px;
+}
 .q-home p,
 .card-home-crs3 p {
     margin-bottom: 0;
+}
+@media (max-width: 678px) {
+    .q-home {
+        margin-bottom: 35px;
+    }
+}
+.box-container-h{
+margin-bottom: 130px;
+}
+@media (max-width: 678px) {
+    .box-container-h{
+        margin-bottom: 65px;
+        }
 }
 
 .card-home-crs3 {
@@ -55,7 +73,7 @@
     border-radius: 30px;
     margin: 5px 15px;
     padding: 20px 0;
-    min-height: 350px;
+    min-height: 384px;
     display: flex;
     justify-content: center;
 }
@@ -94,40 +112,41 @@
 
 .category-h {
     box-shadow: 0px 0px 20px rgb(0 0 0 / 17%);
-    border-radius: 30px;
-    margin: 5px 15px;
+    border-radius: 10px;
+    margin: 5px 30px 5px 0px;
     padding: 20px 0;
     cursor: pointer;
 
 }
 
 .category-h img {
-    height: 240px;
-    width: 73%;
+    width: 88%;
+    height: auto;
 }
+
 .list-cate-crs .swiper {
-    padding: 20px 30px;
+    overflow: visible;
 }
 
-@media (max-width: 565px) {
-    .category-h img {
-        height: 150px;
-    }
-}
-@media (max-width: 441px) {
+@media (max-width: 768px) {
     .category-h {
-        min-height: 278px;
+        margin: 5px 15px 5px 0px;
     }
+
 }
 
-@media (max-width: 400px) {
-    .category-h {
-        min-height: 248px;
-    }
-    .category-h img {
-        height: 120px;
-    }
+.cer-card {
+    margin: 5px 30px 5px 0px;
+    cursor: pointer;
 }
+
+@media (max-width: 768px) {
+    .cer-card {
+        margin: 5px 15px 5px 0px;
+    }
+
+}
+
 
 .btn-more-cate {
     background-color: transparent;
@@ -150,4 +169,24 @@
 .img-cr1-h {
     height: 590px;
     width: 100%;
+}
+.rps-title1-h {
+    font-size: 36px;
+    margin-bottom: 25px;
+}
+.rps-title2-h {
+    font-size: 30px;
+    margin-bottom: 0;
+}
+
+@media (max-width: 567px) {
+    .rps-title1-h {
+        font-size: 25px;
+    }
+    .rps-title2-h {
+        font-size: 25px;
+    }
+}
+.rps-title2-h-ctn{
+    margin-bottom: 100px;
 }

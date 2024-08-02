@@ -19,8 +19,19 @@ import ct1 from "../../assets/homePage/category/cate_banh.jpg";
 import ct2 from "../../assets/homePage/category/cate_hat_dinh_duong.jpg";
 import ct3 from "../../assets/homePage/category/cate_hat_lam_sua.jpg";
 import ct4 from "../../assets/homePage/category/cate_ngu_coc.jpg";
-import ct5 from "../../assets/homePage/category/cate_rong_bien.webp";
+import ct5 from "../../assets/homePage/category/cate_rong_bien_2.webp";
 import ct6 from "../../assets/homePage/category/cate_trai_cay.png";
+import pp1 from "../../assets/homePage/crs3/clean_source.webp";
+import pp2 from "../../assets/homePage/process/cook.webp";
+import pp3 from "../../assets/homePage/process/packing.webp";
+import pp4 from "../../assets/homePage/process/preservation.webp";
+import ps from "../../assets/homePage/day_chuyen_san_xuat.webp";
+import c1 from "../../assets/homePage/certification/c1.jpg";
+import c2 from "../../assets/homePage/certification/c2.jpg";
+import c3 from "../../assets/homePage/certification/c3.jpg";
+import c4 from "../../assets/homePage/certification/c4.jpg";
+import c5 from "../../assets/homePage/certification/c5.jpg";
+import c6 from "../../assets/homePage/certification/c6.jpg";
 import { useRef } from "react";
 
 export default function HomePage() {
@@ -28,6 +39,14 @@ export default function HomePage() {
     const categorySwiperRef = useRef();
     const navigate = useNavigate();
 
+    const certification = [
+        { id: "1c", url: c1 },
+        { id: "2c", url: c2 },
+        { id: "3c", url: c3 },
+        { id: "4c", url: c4 },
+        { id: "5c", url: c5 },
+        { id: "6c", url: c6 },
+    ];
 
     return (
         <div className="homePage-container">
@@ -142,9 +161,9 @@ export default function HomePage() {
                 </div>
             </div>
 
-            <div className="q-home d-flex container-fl" style={{ flexWrap: 'wrap', marginTop: '80px' }}>
+            <div className="q-home d-flex container-fl" style={{ flexWrap: 'wrap'}}>
                 <div className="col-lg-7 col-12">
-                    <h2 style={{ fontWeight: 'bold', fontSize: '36px', lineHeight: 'normal' }}>TẠI SAO KHÁCH HÀNG <br />
+                    <h2 className="rps-title1-h" style={{ fontWeight: 'bold', lineHeight: 'normal' }}>TẠI SAO KHÁCH HÀNG <br />
                         <span style={{ color: 'rgb(51 167 93)' }}> LỰA CHỌN</span> NGỌC OANH FOODS</h2>
                 </div>
                 <div className="col-lg-5 col-12">
@@ -153,7 +172,7 @@ export default function HomePage() {
                 </div>
             </div>
 
-            <div className="container-fl" style={{ marginTop: '100px' }}>
+            <div className="container-fl box-container-h">
                 <Swiper
                     slidesPerView={1}
                     spaceBetween={0}
@@ -165,7 +184,7 @@ export default function HomePage() {
                     speed={1100}
                     modules={[Navigation, Autoplay]}
                     breakpoints={{
-                        380: {
+                        668: {
                             slidesPerView: 1,
                             spaceBetween: 0
                         },
@@ -187,7 +206,7 @@ export default function HomePage() {
                                 </div>
                                 <div>
                                     <p className="mb-4" style={{ textAlign: 'center', fontWeight: 'bold', color: '#257140' }}>Không chất béo xấu</p>
-                                    <p className="content-crs3">Baker Baking luôn cố gắng tận dụng tối đa nguồn chất béo tốt từ các loại hạt dinh dưỡng như hạt hạnh nhân, óc chó, macca, hạt dẻ, hạt điều, hạt bí, nho kho, quả nam việt quất,..</p>
+                                    <p className="content-crs3">Ngọc Oanh Foods luôn cố gắng tận dụng tối đa nguồn chất béo tốt từ các loại hạt dinh dưỡng như hạt hạnh nhân, óc chó, macca, hạt dẻ, hạt điều, hạt bí, nho kho, quả nam việt quất,..</p>
                                     <Link to={"/a"} className="mt-3 mb-2" style={{ textAlign: 'center', display: 'block' }}>Tìm hiểu thêm &gt;</Link>
                                 </div>
                             </div>
@@ -201,7 +220,7 @@ export default function HomePage() {
                                 </div>
                                 <div>
                                     <p className="mb-4" style={{ textAlign: 'center', fontWeight: 'bold', color: '#257140' }}>Nguồn gốc xuất sứ rõ ràng</p>
-                                    <p className="content-crs3">Nguồn nguyên liệu để sản xuất tại Baker Baking đều từ các sản phẩm có nguồn gốc xuất xứ rõ ràng, có giấy chứng nhận kiểm định chất lượng của Bộ Y tế.</p>
+                                    <p className="content-crs3">Nguồn nguyên liệu để sản xuất tại Ngọc Oanh Foods đều từ các sản phẩm có nguồn gốc xuất xứ rõ ràng, có giấy chứng nhận kiểm định chất lượng của Bộ Y tế.</p>
                                     <Link to={"/a"} className="mt-3 mb-2" style={{ textAlign: 'center', display: 'block' }}>Tìm hiểu thêm &gt;</Link>
                                 </div>
                             </div>
@@ -215,7 +234,7 @@ export default function HomePage() {
                                 </div>
                                 <div>
                                     <p className="mb-4" style={{ textAlign: 'center', fontWeight: 'bold', color: '#257140' }}>Không chất bảo quản</p>
-                                    <p className="content-crs3">Các sản phẩm ngũ cốc Granola, bánh biscotti, bánh quy yến mạch,... mang thương hiệu Baker Baking đều cam kết 100% không sử dụng chất bảo quản hóa học ...</p>
+                                    <p className="content-crs3">Các sản phẩm ngũ cốc, bánh gạo lứt, bánh cookie yến mạch,... mang thương hiệu Ngọc Oanh Foods đều cam kết 100% không sử dụng chất bảo quản hóa học ...</p>
                                     <Link to={"/a"} className="mt-3 mb-2" style={{ textAlign: 'center', display: 'block' }}>Tìm hiểu thêm &gt;</Link>
                                 </div>
                             </div>
@@ -229,7 +248,7 @@ export default function HomePage() {
                                 </div>
                                 <div>
                                     <p className="mb-4" style={{ textAlign: 'center', fontWeight: 'bold', color: '#257140' }}>Không chất béo xấu</p>
-                                    <p className="content-crs3">Baker Baking luôn cố gắng tận dụng tối đa nguồn chất béo tốt từ các loại hạt dinh dưỡng như hạt hạnh nhân, óc chó, macca, hạt dẻ, hạt điều, hạt bí, nho kho, quả nam việt quất,..</p>
+                                    <p className="content-crs3">Ngọc Oanh Foods luôn cố gắng tận dụng tối đa nguồn chất béo tốt từ các loại hạt dinh dưỡng như hạt hạnh nhân, óc chó, macca, hạt dẻ, hạt điều, hạt bí, nho kho, quả nam việt quất,..</p>
                                     <Link to={"/a"} className="mt-3 mb-2" style={{ textAlign: 'center', display: 'block' }}>Tìm hiểu thêm &gt;</Link>
                                 </div>
                             </div>
@@ -243,7 +262,7 @@ export default function HomePage() {
                                 </div>
                                 <div>
                                     <p className="mb-4" style={{ textAlign: 'center', fontWeight: 'bold', color: '#257140' }}>Nguồn gốc xuất sứ rõ ràng</p>
-                                    <p className="content-crs3">Nguồn nguyên liệu để sản xuất tại Baker Baking đều từ các sản phẩm có nguồn gốc xuất xứ rõ ràng, có giấy chứng nhận kiểm định chất lượng của Bộ Y tế.</p>
+                                    <p className="content-crs3">Nguồn nguyên liệu để sản xuất tại Ngọc Oanh Foods đều từ các sản phẩm có nguồn gốc xuất xứ rõ ràng, có giấy chứng nhận kiểm định chất lượng của Bộ Y tế.</p>
                                     <Link to={"/a"} className="mt-3 mb-2" style={{ textAlign: 'center', display: 'block' }}>Tìm hiểu thêm &gt;</Link>
                                 </div>
                             </div>
@@ -257,7 +276,7 @@ export default function HomePage() {
                                 </div>
                                 <div>
                                     <p className="mb-4" style={{ textAlign: 'center', fontWeight: 'bold', color: '#257140' }}>Không chất bảo quản</p>
-                                    <p className="content-crs3">Các sản phẩm ngũ cốc Granola, bánh biscotti, bánh quy yến mạch,... mang thương hiệu Baker Baking đều cam kết 100% không sử dụng chất bảo quản hóa học ...</p>
+                                    <p className="content-crs3">Các sản phẩm ngũ cốc, bánh gạo lứt, bánh cookie yến mạch,... mang thương hiệu Ngọc Oanh Foods đều cam kết 100% không sử dụng chất bảo quản hóa học ...</p>
                                     <Link to={"/a"} className="mt-3 mb-2" style={{ textAlign: 'center', display: 'block' }}>Tìm hiểu thêm &gt;</Link>
                                 </div>
                             </div>
@@ -267,8 +286,8 @@ export default function HomePage() {
 
             </div>
 
-            <div className="container-fl" style={{ marginTop: '130px' }}>
-                <p style={{ textAlign: 'center', fontSize: '30px', color: 'rgb(51 167 93)', fontWeight: '600' }} className="mb-5">Các sản phẩm nổi bật</p>
+            <div className="container-fl box-container-h">
+                <p style={{ textAlign: 'center', color: 'rgb(51 167 93)', fontWeight: '600' }} className="mb-5 rps-title2-h">Các sản phẩm nổi bật</p>
                 <div className="list-cate-crs">
                     <Swiper
                         onSwiper={(swiper) => { categorySwiperRef.current = swiper }}
@@ -306,7 +325,7 @@ export default function HomePage() {
                                     <img src={ct1} alt="..." />
                                 </div>
                                 <div>
-                                    <p className="mt-4 mb-3" style={{ textAlign: 'center', fontWeight: 'bold' }}>Tất cả sản phẩm</p>
+                                    <p className="mt-4 mb-3 mx-2" style={{ textAlign: 'center', fontWeight: 'bold' }}>Tất cả sản phẩm</p>
                                 </div>
                             </div>
                         </SwiperSlide>
@@ -316,7 +335,7 @@ export default function HomePage() {
                                     <img src={ct1} alt="..." />
                                 </div>
                                 <div>
-                                    <p className="mt-4 mb-3" style={{ textAlign: 'center', fontWeight: 'bold' }}>Bánh hạt dinh dưỡng</p>
+                                    <p className="mt-4 mb-3 mx-2" style={{ textAlign: 'center', fontWeight: 'bold' }}>Bánh hạt dinh dưỡng</p>
                                 </div>
                             </div>
                         </SwiperSlide>
@@ -326,7 +345,7 @@ export default function HomePage() {
                                     <img src={ct2} alt="..." />
                                 </div>
                                 <div>
-                                    <p className="mt-4 mb-3" style={{ textAlign: 'center', fontWeight: 'bold' }}>Hạt dinh dưỡng</p>
+                                    <p className="mt-4 mb-3 mx-2" style={{ textAlign: 'center', fontWeight: 'bold' }}>Hạt dinh dưỡng</p>
                                 </div>
                             </div>
                         </SwiperSlide>
@@ -336,7 +355,7 @@ export default function HomePage() {
                                     <img src={ct3} alt="..." />
                                 </div>
                                 <div>
-                                    <p className="mt-4 mb-3" style={{ textAlign: 'center', fontWeight: 'bold' }}>Hạt làm sữa</p>
+                                    <p className="mt-4 mb-3 mx-2" style={{ textAlign: 'center', fontWeight: 'bold' }}>Hạt làm sữa</p>
                                 </div>
                             </div>
                         </SwiperSlide>
@@ -346,7 +365,7 @@ export default function HomePage() {
                                     <img src={ct4} alt="..." />
                                 </div>
                                 <div>
-                                    <p className="mt-4 mb-3" style={{ textAlign: 'center', fontWeight: 'bold' }}>Ngũ cốc</p>
+                                    <p className="mt-4 mb-3 mx-2" style={{ textAlign: 'center', fontWeight: 'bold' }}>Ngũ cốc</p>
                                 </div>
                             </div>
                         </SwiperSlide>
@@ -356,7 +375,7 @@ export default function HomePage() {
                                     <img src={ct5} alt="..." />
                                 </div>
                                 <div>
-                                    <p className="mt-4 mb-3" style={{ textAlign: 'center', fontWeight: 'bold' }}>Rong biển sấy</p>
+                                    <p className="mt-4 mb-3 mx-2" style={{ textAlign: 'center', fontWeight: 'bold' }}>Rong biển sấy</p>
                                 </div>
                             </div>
                         </SwiperSlide>
@@ -366,22 +385,232 @@ export default function HomePage() {
                                     <img src={ct6} alt="..." />
                                 </div>
                                 <div>
-                                    <p className="mt-4 mb-3" style={{ textAlign: 'center', fontWeight: 'bold' }}>Trái cây sấy</p>
+                                    <p className="mt-4 mb-3 mx-2" style={{ textAlign: 'center', fontWeight: 'bold' }}>Trái cây sấy</p>
                                 </div>
                             </div>
                         </SwiperSlide>
 
                     </Swiper>
                 </div>
-                <div className="d-flex justify-content-center align-items-center mt-3">
+                <div className="d-flex justify-content-center align-items-center mt-4">
                     <button className="btn-more-cate" onClick={() => { categorySwiperRef.current.slideNext() }}>Xem thêm
                         <span className="material-symbols-outlined">chevron_right</span>
                     </button>
                 </div>
             </div>
 
+            <div className="q-home d-flex container-fl" style={{ flexWrap: 'wrap'}}>
+                <div className="col-lg-7 col-12">
+                    <h2 className="rps-title1-h" style={{ fontWeight: 'bold', lineHeight: 'normal' }}><span style={{ color: 'rgb(51 167 93)' }}>QUY TRÌNH </span>SẢN XUẤT<br />
+                        TẠI NGỌC OANH FOODS</h2>
+                </div>
+                <div className="col-lg-5 col-12">
+                    <p>Ngọc Oanh Foods tuân thủ nghiêm ngặt các tiêu chuẩn chất lượng cao nhất trong toàn bộ quá trình sản xuất</p>
+                </div>
+            </div>
 
+            <div className="container-fl box-container-h">
+                <Swiper
+                    slidesPerView={1}
+                    spaceBetween={0}
+                    loop={true}
+                    // autoplay={{
+                    //     delay: 2500,
+                    //     disableOnInteraction: false,
+                    // }}
+                    speed={1100}
+                    modules={[Navigation, Autoplay]}
+                    breakpoints={{
+                        530: {
+                            slidesPerView: 2,
+                            spaceBetween: 0
+                        },
+                        768: {
+                            slidesPerView: 3,
+                            spaceBetween: 0
+                        },
+                        1024: {
+                            slidesPerView: 4,
+                            spaceBetween: 0
+                        }
+                    }}
+                >
+                    <SwiperSlide>
+                        <div className="card-home-crs3">
+                            <div className="col-9">
+                                <div className="d-flex justify-content-center mb-5">
+                                    <img src={pp1} alt="..." height="80px" />
+                                </div>
+                                <div>
+                                    <p className="mb-4" style={{ textAlign: 'center', fontWeight: 'bold', color: '#257140' }}>Nguyên liệu</p>
+                                    <p className="content-crs3">Nguyên liệu đầu vào tại Ngọc Oanh Foods được nhập khẩu trực tiếp từ các quốc gia như Úc, Mỹ, Chile, các nước Nam Phi,.. và các cơ sở chế biến đạt tiêu chuẩn VietGAP.</p>
+                                    <Link to={"/a"} className="mt-3 mb-2" style={{ textAlign: 'center', display: 'block' }}>Tìm hiểu thêm &gt;</Link>
+                                </div>
+                            </div>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div className="card-home-crs3">
+                            <div className="col-9">
+                                <div className="d-flex justify-content-center mb-5">
+                                    <img src={pp2} alt="..." height="80px" />
+                                </div>
+                                <div>
+                                    <p className="mb-4" style={{ textAlign: 'center', fontWeight: 'bold', color: '#257140' }}>Chế biến</p>
+                                    <p className="content-crs3">Mỗi sản phẩm tại Ngọc Oanh Foods sẽ có quy trình chế biến khác nhau.  Chúng tôi luôn tuân thủ nghiêm ngặt các tiêu chuẩn chất lượng cao nhất về an toàn vstp.</p>
+                                    <Link to={"/a"} className="mt-3 mb-2" style={{ textAlign: 'center', display: 'block' }}>Tìm hiểu thêm &gt;</Link>
+                                </div>
+                            </div>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div className="card-home-crs3">
+                            <div className="col-9">
+                                <div className="d-flex justify-content-center mb-5">
+                                    <img src={pp3} alt="..." height="80px" />
+                                </div>
+                                <div>
+                                    <p className="mb-4" style={{ textAlign: 'center', fontWeight: 'bold', color: '#257140' }}>Đóng gói</p>
+                                    <p className="content-crs3">Sau quá trình sản xuất, các sản phẩm dinh dưỡng tại Ngọc Oanh Foods sẽ được kiểm tra thành phẩm rồi đóng gói, hút chân không theo quy trình khép kín, hiện đại.</p>
+                                    <Link to={"/a"} className="mt-3 mb-2" style={{ textAlign: 'center', display: 'block' }}>Tìm hiểu thêm &gt;</Link>
+                                </div>
+                            </div>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div className="card-home-crs3">
+                            <div className="col-9">
+                                <div className="d-flex justify-content-center mb-5">
+                                    <img src={pp4} alt="..." height="80px" />
+                                </div>
+                                <div>
+                                    <p className="mb-4" style={{ textAlign: 'center', fontWeight: 'bold', color: '#257140' }}>Bảo quản</p>
+                                    <p className="content-crs3">Hầu hết các sản phẩm mang thương hiệu Ngọc Oanh Foods sẽ có thời gian bảo quản là 6 tháng. Do không dùng chất bảo quản tổng hợp trong quá trình sản xuất.</p>
+                                    <Link to={"/a"} className="mt-3 mb-2" style={{ textAlign: 'center', display: 'block' }}>Tìm hiểu thêm &gt;</Link>
+                                </div>
+                            </div>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div className="card-home-crs3">
+                            <div className="col-9">
+                                <div className="d-flex justify-content-center mb-5">
+                                    <img src={pp1} alt="..." height="80px" />
+                                </div>
+                                <div>
+                                    <p className="mb-4" style={{ textAlign: 'center', fontWeight: 'bold', color: '#257140' }}>Nguyên liệu</p>
+                                    <p className="content-crs3">Nguyên liệu đầu vào tại Ngọc Oanh Foods được nhập khẩu trực tiếp từ các quốc gia như Úc, Mỹ, Chile, các nước Nam Phi,.. và các cơ sở chế biến đạt tiêu chuẩn VietGAP.</p>
+                                    <Link to={"/a"} className="mt-3 mb-2" style={{ textAlign: 'center', display: 'block' }}>Tìm hiểu thêm &gt;</Link>
+                                </div>
+                            </div>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div className="card-home-crs3">
+                            <div className="col-9">
+                                <div className="d-flex justify-content-center mb-5">
+                                    <img src={pp2} alt="..." height="80px" />
+                                </div>
+                                <div>
+                                    <p className="mb-4" style={{ textAlign: 'center', fontWeight: 'bold', color: '#257140' }}>Chế biến</p>
+                                    <p className="content-crs3">Mỗi sản phẩm tại Ngọc Oanh Foods sẽ có quy trình chế biến khác nhau.  Chúng tôi luôn tuân thủ nghiêm ngặt các tiêu chuẩn chất lượng cao nhất về an toàn vstp.</p>
+                                    <Link to={"/a"} className="mt-3 mb-2" style={{ textAlign: 'center', display: 'block' }}>Tìm hiểu thêm &gt;</Link>
+                                </div>
+                            </div>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div className="card-home-crs3">
+                            <div className="col-9">
+                                <div className="d-flex justify-content-center mb-5">
+                                    <img src={pp3} alt="..." height="80px" />
+                                </div>
+                                <div>
+                                    <p className="mb-4" style={{ textAlign: 'center', fontWeight: 'bold', color: '#257140' }}>Đóng gói</p>
+                                    <p className="content-crs3">Sau quá trình sản xuất, các sản phẩm dinh dưỡng tại Ngọc Oanh Foods sẽ được kiểm tra thành phẩm rồi đóng gói, hút chân không theo quy trình khép kín, hiện đại.</p>
+                                    <Link to={"/a"} className="mt-3 mb-2" style={{ textAlign: 'center', display: 'block' }}>Tìm hiểu thêm &gt;</Link>
+                                </div>
+                            </div>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div className="card-home-crs3">
+                            <div className="col-9">
+                                <div className="d-flex justify-content-center mb-5">
+                                    <img src={pp4} alt="..." height="80px" />
+                                </div>
+                                <div>
+                                    <p className="mb-4" style={{ textAlign: 'center', fontWeight: 'bold', color: '#257140' }}>Bảo quản</p>
+                                    <p className="content-crs3">Hầu hết các sản phẩm mang thương hiệu Ngọc Oanh Foods sẽ có thời gian bảo quản là 6 tháng. Do không dùng chất bảo quản tổng hợp trong quá trình sản xuất.</p>
+                                    <Link to={"/a"} className="mt-3 mb-2" style={{ textAlign: 'center', display: 'block' }}>Tìm hiểu thêm &gt;</Link>
+                                </div>
+                            </div>
+                        </div>
+                    </SwiperSlide>
+
+                </Swiper>
+
+            </div>
+
+            <div className="container-fl mb-5">
+                <p className="rps-title2-h" style={{ textAlign: 'center', textTransform: 'uppercase', fontWeight: '600', color: 'rgb(51, 167, 93)' }}>Giới thiệu dây chuyền sản xuất</p>
+            </div>
+            <div className="box-container-h">
+                <img src={ps} alt="..." style={{ width: '100%', height: 'auto' }} />
+            </div>
+
+
+
+            <div className="container-fl">
+                
+                <p className="rps-title2-h mb-5" style={{ textAlign: 'center', textTransform: 'uppercase', fontWeight: '600', color: 'rgb(51, 167, 93)' }}>Các chứng chỉ đạt được</p>
+                <Swiper
+                    slidesPerView={2}
+                    spaceBetween={0}
+                    // autoplay={{
+                    //     delay: 2500,
+                    //     disableOnInteraction: false,
+                    // }}
+                    speed={1100}
+                    navigation={true}
+                    modules={[Navigation, Autoplay]}
+                    breakpoints={{
+                        380: {
+                            slidesPerView: 2,
+                            spaceBetween: 0
+                        },
+                        420: {
+                            slidesPerView: 2,
+                            spaceBetween: 0
+                        },
+                        768: {
+                            slidesPerView: 3,
+                            spaceBetween: 0
+                        },
+                        1024: {
+                            slidesPerView: 4,
+                            spaceBetween: 0
+                        }
+                    }}
+                >
+                    {certification.map((item, index) => (
+                        <SwiperSlide key={item.id} virtualIndex={index}>
+                            <div className="cer-card">
+                                <img src={item.url} alt="..." style={{ width: '100%' }} />
+                            </div>
+                        </SwiperSlide>
+                    ))}
+
+                </Swiper>
             
+            </div>
+
+           
+
+
+
+
+
             <div>
                 <p>kj</p>
                 <p>kj</p>
