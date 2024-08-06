@@ -32,13 +32,22 @@ import c3 from "../../assets/homePage/certification/c3.jpg";
 import c4 from "../../assets/homePage/certification/c4.jpg";
 import c5 from "../../assets/homePage/certification/c5.jpg";
 import c6 from "../../assets/homePage/certification/c6.jpg";
-import { useRef, useState } from "react";
+import vision from "../../assets/homePage/vision.png";
+import mission from "../../assets/homePage/mission.png";
+import person from "../../assets/homePage/feedback/person.jpg";
+import bl1 from "../../assets/homePage/blog/oc.jpg";
+import bl2 from "../../assets/homePage/blog/hanh_nhan.jpg";
+import bl3 from "../../assets/homePage/blog/bi.jpg";
+import bl4 from "../../assets/homePage/blog/banh.jpg";
+import { useEffect, useRef, useState } from "react";
 
 export default function HomePage() {
 
     const categorySwiperRef = useRef();
     const navigate = useNavigate();
     const [certificationCurrent, setCertificationCurrent] = useState();
+    const [flagCerStatus, setFlagCerStatus] = useState(false);
+    const [openCer, setOpenCer] = useState(false);
 
     const certification = [
         { id: "1c", url: c1 },
@@ -48,6 +57,23 @@ export default function HomePage() {
         { id: "5c", url: c5 },
         { id: "6c", url: c6 },
     ];
+
+    const openModalCer = (url) => {
+        setCertificationCurrent(url);
+        setFlagCerStatus(!flagCerStatus);
+    }
+
+    const closeModalCer = () => {
+        setOpenCer(false);
+    }
+
+    useEffect(() => {
+        if (certificationCurrent) {
+            setOpenCer(true);
+        }
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [flagCerStatus])
 
     return (
         <div className="homePage-container">
@@ -291,7 +317,7 @@ export default function HomePage() {
                 <p style={{ textAlign: 'center', color: 'rgb(51 167 93)', fontWeight: '600' }} className="mb-4 rps-title2-h">Các sản phẩm nổi bật</p>
             </div>
 
-            <div style={{width:'100%', overflow:'hidden'}}>
+            <div style={{ width: '100%', overflow: 'hidden' }}>
                 <div className="container-fl box-container-h">
                     <div className="list-cate-crs">
                         <Swiper
@@ -568,7 +594,7 @@ export default function HomePage() {
 
 
 
-            <div className="container-fl">
+            <div className="container-fl mb-5 cer-container">
 
                 <p className="rps-title2-h mb-5" style={{ textAlign: 'center', textTransform: 'uppercase', fontWeight: '600', color: 'rgb(51, 167, 93)' }}>Các chứng chỉ đạt được</p>
                 <Swiper
@@ -602,7 +628,7 @@ export default function HomePage() {
                 >
                     {certification.map((item, index) => (
                         <SwiperSlide key={item.id} virtualIndex={index}>
-                            <div className="cer-card">
+                            <div className="cer-card" onClick={() => { openModalCer(item.url) }}>
                                 <img src={item.url} alt="..." style={{ width: '100%' }} />
                             </div>
                         </SwiperSlide>
@@ -611,34 +637,111 @@ export default function HomePage() {
                 </Swiper>
 
             </div>
-
-
-
-
-
-
-
             <div>
-                <p>kj</p>
-                <p>kj</p>
-                <p>kj</p>
-                <p>kj</p>
-                <p>kj</p>
-                <p>kj</p>
-                <p>kj</p>
-                <p>kj</p>
-                <p>kj</p>
-                <p>kj</p>
-                <p>kj</p>
-                <p>kj</p>
-                <p>kj</p>
-                <p>kj</p>
-                <p>kj</p>
+                <div>
+                    <h2 className="rps-title1-h" style={{ fontWeight: 'bold', lineHeight: 'normal', textAlign: 'center' }}>CÂU CHUYỆN <span style={{ color: 'rgb(51 167 93)' }}>NGỌC OANH FOODS</span></h2>
+                </div>
+            </div>
+            <div className="d-flex" style={{ flexWrap: 'wrap' }}>
+                <div className="col-lg-6 col-12">
+                    <img src={vision} alt="..." width="100%" />
+                </div>
+                <div className="col-lg-6 col-12">
+                    <img src={mission} alt="..." width="100%" />
+                </div>
             </div>
 
-            {/* <div className="modal-certification">
-                <img src={c1} alt="..." style={{width:'50%', height:'auto'}}/>
-            </div> */}
+            <div style={{ backgroundColor: '#FFFCF3', padding: '70px 0px 100px 0px', marginBottom: '70px' }}>
+                <div className="container-fl d-flex" style={{ flexWrap: 'wrap' }}>
+                    <div className="col-lg-4 col-12" style={{ paddingTop: '30px' }}>
+                        <h2 className="rps-title1-h" style={{ fontWeight: 'bold', lineHeight: 'normal' }}><span style={{ color: 'rgb(51 167 93)' }}>CẢM ƠN </span>
+                            SỰ TIN TƯỞNG CỦA KHÁCH HÀNG</h2>
+                        <p className="mt-4">Ngọc Oanh Foods chân thành cảm ơn sự ủng hộ của tất cả các khách hàng đã yêu mến và tin tưởng Ngọc Oanh Foods .....</p>
+                    </div>
+                    <div className="col-lg-4 col-12" style={{ paddingTop: '30px' }}>
+                        <div className="feedback-card mx-4 p-4">
+                            <div style={{ borderRadius: '10px', overflow: 'hidden' }}>
+                                <img src={person} alt="..." style={{ width: '100%' }} />
+                            </div>
+                            <div className="mt-3">
+                                <p>Anh A</p>
+                                <p>Là một người khá kỹ tính, tôi luôn luôn lựa chọn những thực phẩm sạch và tốt cho sức khỏe nhất, V và đây là nơi tôi đặt trọng niềm tin.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-lg-4 col-12" style={{ paddingTop: '30px' }}>
+                        <div className="feedback-card mx-4 p-4">
+                            <div style={{ borderRadius: '10px', overflow: 'hidden' }}>
+                                <img src={person} alt="..." style={{ width: '100%' }} />
+                            </div>
+                            <div className="mt-3">
+                                <p>Anh B</p>
+                                <p>Là một huấn luận viên tôi luôn lựa chọn kĩ càng những thực phẩm nạp vào cơ thể, và BakerBaking là sự lựa chọn của tôi.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div className="container-fl blog">
+                <div>
+                    <h2 className="rps-title1-h" style={{ fontWeight: 'bold', lineHeight: 'normal' }}>BÀI VIẾT CHUYÊN ĐỀ <br /><span style={{ color: 'rgb(51 167 93)' }}>
+                        DINH DƯỠNG - GIẢM CÂN </span></h2>
+                </div>
+                <div className="d-flex pt-3" style={{ flexWrap: 'wrap' }}>
+                    <div className="col-lg-6 col-12 d-flex post-bl pe-5" style={{ flexWrap: 'wrap' }}>
+                        <div className="col-3">
+                            <img src={bl1} alt="..." style={{ width: '100%', cursor: 'pointer' }} onClick={() => { navigate("/") }} />
+                        </div>
+                        <div className="col-9">
+                            <Link to={"/"} className="title-blog">Ngũ cốc dành cho bà bầu loại nào tốt? Nên mua ở đâu?</Link>
+                            <p>Ngũ cốc dành cho  bà bầu loại nào tốt và nên mua ở đâu luôn được phụ nữ mang thai quan tâm. Để chọn được loại ngũ cốc chất lượng nhất, người dùng có thể mua ở các siêu thị, cửa...</p>
+                        </div>
+                    </div>
+                    <div className="col-lg-6 col-12 d-flex post-bl pe-5" style={{ flexWrap: 'wrap' }}>
+                        <div className="col-3">
+                            <img src={bl4} alt="..." style={{ width: '100%', cursor: 'pointer' }} onClick={() => { navigate("/") }} />
+                        </div>
+                        <div className="col-9">
+                            <Link to={"/"} className="title-blog">Nên mua bánh gạo lứt ở đâu để đảm bảo chất lượng tốt nhất?</Link>
+                            <p>Hiện nay, có rất nhiều người tìm mua bánh gạo lứt như một món ăn vặt Healthy giàu dinh dưỡng. Với hương vị hấp dẫn dễ ăn và hàm lượng dinh dưỡng cao, nếu chọn được đúng nơi mua uy tín,...</p>
+                        </div>
+                    </div>
+                    <div className="col-lg-6 col-12 d-flex post-bl pe-5" style={{ flexWrap: 'wrap' }}>
+                        <div className="col-3">
+                            <img src={bl3} alt="..." style={{ width: '100%', cursor: 'pointer' }} onClick={() => { navigate("/") }} />
+                        </div>
+                        <div className="col-9">
+                            <Link to={"/"} className="title-blog">Ngũ cốc mua ở đâu? 3 điểm mua nên trải nghiệm</Link>
+                            <p>Ngoài chất lượng sản phẩm, ngũ cốc Granola mua ở đâu cũng là thắc mắc được nhiều người đặt ra khi chọn mua Granola. Người dùng có thể mua Granola ở các siêu thị, cửa hàng tiện lợi hoặc các...</p>
+                        </div>
+                    </div>
+                    <div className="col-lg-6 col-12 d-flex post-bl pe-5" style={{ flexWrap: 'wrap' }}>
+                        <div className="col-3">
+                            <img src={bl2} alt="..." style={{ width: '100%', cursor: 'pointer' }} onClick={() => { navigate("/") }} />
+                        </div>
+                        <div className="col-9">
+                            <Link to={"/"} className="title-blog">Hạt hạnh nhân giá bao nhiêu? Lợi ích vàng cho sức khỏe</Link>
+                            <p>Từ lâu, hạt hạnh nhân được giới giảm cân và làm đẹp ưu ái với nguồn dưỡng chất cao đồng thời hỗ trợ cải thiện cân nặng và làn da. Không chỉ thế hạnh nhân còn được giới dinh dưỡng...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {
+                openCer ? (
+                    <div className="modal-certification">
+                        <div style={{ position: 'fixed', top: '0', right: '0', padding: '10px 10px', cursor: 'pointer' }} onClick={closeModalCer}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">
+                                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z" />
+                            </svg>
+                        </div>
+                        <img src={certificationCurrent} alt="..." className="img-cer" />
+                    </div>
+                ) : (<></>)
+            }
         </div>
     )
 }

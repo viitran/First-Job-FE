@@ -1,0 +1,33 @@
+.footer-container {
+    background-color: #257140;
+    width: 100%;
+}
+.footer-container p, .footer-container li {
+    margin-bottom: 0;
+    color: #f0f0f0;
+    font-size: 15px;
+}
+.footer-container ul {
+    margin: 0;
+    padding: 0px 0px 0px 14px;
+}
+.footer-container li {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.fb-footer {
+    margin-top: 0;
+}
+.policy-f {
+    margin-top: 0;
+}
+@media (max-width: 992px) {
+    .fb-footer {
+        margin-top: 30px;
+    }
+}
+@media (max-width: 768px) {
+   .policy-f {
+    margin-top: 30px;
+   }
+}

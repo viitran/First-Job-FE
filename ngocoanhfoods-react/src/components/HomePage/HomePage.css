@@ -39,13 +39,17 @@
     margin-right: auto;
     margin-left: auto;
 }
-
 @media (min-width: 1200px) {
     .container-fl {
-        /* max-width: 1254px; */
         max-width: 1170px;
     }
 }
+@media (min-width: 1300px) {
+    .container-fl {
+        max-width: 1254px;
+    }
+}
+
 
 .q-home {
     margin-bottom: 100px;
@@ -80,6 +84,7 @@ margin-bottom: 130px;
 
 .card-home-crs3 p {
     cursor: default;
+    text-align: justify;
 }
 
 .card-home-crs3 a {
@@ -172,9 +177,22 @@ margin-bottom: 130px;
     height: 590px;
     width: 100%;
 }
+@media (max-width:768px){
+    .img-cr1-h {
+        height: 465px;
+        width: 100%;
+    }
+}
+@media (max-width:480px){
+    .img-cr1-h {
+        height: 300px;
+        width: 100%;
+    }
+}
 .rps-title1-h {
     font-size: 36px;
     margin-bottom: 25px;
+    color: #323c3f;
 }
 .rps-title2-h {
     font-size: 30px;
@@ -202,4 +220,77 @@ margin-bottom: 130px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.modal-certification svg {
+    color: #f0f0f0;
+    background-color: transparent;
+}
+@media (max-width: 560px){
+    .modal-certification svg {
+        background-color: rgb(99, 99, 99);
+    } 
+}
+.img-cer{
+    height: 96vh;
+    width: auto;
+}
+@media (max-width: 460px){
+    .img-cer{
+        width: 100%;
+        height: auto;
+    }
+    .modal-certification svg {
+        color: #f0f0f0;
+        background-color: transparent;
+    }
+}
+.cer-container {
+    padding-bottom: 80px;
+}
+@media (max-width: 567px) {
+    .cer-container {
+        padding-bottom: 0;
+    }
+}
+.cer-container .swiper-button-next, .cer-container .swiper-button-prev {
+color: rgb(51, 167, 93);
+}
+.cer-container .swiper-button-next {
+    padding-right: 37px;
+}
+.feedback-card {
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 0px 0px 20px rgb(0 0 0 / 17%);
+}
+.blog p {
+    padding-left: 30px;
+    margin-bottom: 0;
+}
+.title-blog {
+    padding-left: 30px;
+    font-weight: bold;
+    padding-bottom: 20px;
+    text-decoration: none;
+    display: block;
+    color: #323c3f;
+}
+.post-bl {
+    margin-bottom: 3rem;
+}
+@media (max-width: 560px) {
+    .blog p {
+        display: none;
+    }
+    .post-bl {
+        margin-bottom: 2rem;
+    }
+    .title-blog {
+        padding-bottom: 0;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
 }
