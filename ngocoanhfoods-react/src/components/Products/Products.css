@@ -1,0 +1,123 @@
+.box-filter {
+    border: 1px solid #ebebeb;
+    border-radius: 15px;
+    margin-bottom: 50px;
+}
+
+.title-filter {
+    border: 1px solid #257140;
+    background-color: #257140;
+    border-radius: 15px;
+}
+
+.title-filter p {
+    margin-bottom: 0px;
+    font-size: 17px;
+    font-weight: 600;
+    color: white;
+}
+
+.filter-content p {
+    border-top: 1px solid #ebebeb;
+    margin-bottom: 0px;
+    padding: 10px 0px;
+    color: #363636;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.filter-content p:hover {
+    color: #3fb568;
+}
+
+.sort-filter {
+    font-size: 14px;
+    padding: 4px 0px 4px 7px;
+    color: #363636;
+    border: 1px solid #ebebeb;
+    border-radius: 15px;
+}
+
+.sort-filter option {
+    font-size: 14px;
+    color: #363636;
+    border: 1px solid #ebebeb;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.product-card-p {
+    padding: 10px 10px 10px 10px;
+    border: 1px solid #ebebeb;
+    border-radius: 15px;
+}
+
+.product-card-p p {
+    margin-bottom: 0;
+}
+
+.title-card-p {
+    font-size: 15px;
+    color: #333;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.title-card-p:hover {
+    color: #3fb568;
+}
+
+.price-p {
+    align-content: center;
+    color: #fe9705;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.container-list-p {
+    padding-left: 30px;
+}
+.container-card-p {
+    padding: 0px 15px;
+    margin-bottom: 30px;
+}
+
+@media (max-width: 992px) {
+    .rps-sb-p {
+        display: none;
+    }
+
+    .container-list-p {
+        padding-left: 0px;
+    }
+    .container-card-p {
+        padding: 0px 15px;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container-card-p {
+        padding: 0px 5px;
+        margin-bottom: 10px;
+    }
+}
+.breadcrum {
+    margin-bottom: 0;
+    padding: 20px 0px;
+    font-size: 14px;
+}
