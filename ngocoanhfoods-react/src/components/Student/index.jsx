@@ -1,50 +1,45 @@
 import { useEffect, useState } from "react";
-import { getURLCategories, getURLProducts } from "../../services/common/api";
+import {
+  getURLCategories,
+  getURLProducts,
+} from "../../services/common/api/api-product";
 import { Link } from "react-router-dom";
+import { getCategories } from "../../services/common/api/api-category";
 
 export default function Student() {
   const [categories, setCategories] = useState();
-  const [products, setProducts] = useState();
-
-  // useEffect(() => {
-  //   fetchApiCate();
-  // }, []);
 
   useEffect(() => {
-    fetchApiProducts();
+    getCategories().then((res) => setCategories(res.data));
   }, []);
-
-  // const fetchApiCate = async () => {
-  //   try {
-  //     const response = await fetch(getURLCategories);
-  //     const data = await response.json();
-  //     setCategories(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  const fetchApiProducts = async () => {
-    try {
-      const resp = await fetch(getURLProducts);
-      const data = await resp.json();
-      setProducts(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const check = () => {
     // console.log(categories.data);
-    console.log(products.data);
+    console.log(categories);
   };
 
   const renderImage = (s) => {
-    return !(s && s.attributes && s.attributes.image && s.attributes.image.data && s.attributes.image.data[0] && s.attributes.image.data[0].attributes && s.attributes.image.data[0].attributes.url) ? <div></div> : <img height={50} src={`http://localhost:1337${s.attributes.image.data[0].attributes.url}`}/>
-  }
+    return !(
+      s &&
+      s.attributes &&
+      s.attributes.image &&
+      s.attributes.image.data &&
+      s.attributes.image.data[0] &&
+      s.attributes.image.data[0].attributes &&
+      s.attributes.image.data[0].attributes.url
+    ) ? (
+      <div></div>
+    ) : (
+      <img
+        height={50}
+        src={`http://localhost:1337${s.attributes.image.data.attributes.url}`}
+      />
+    );
+  };
 
-  // if (!categories) return <div>loading....</div>;
-  if (!products) return <div>loading....</div>;
+  if (!categories) return <div>loading....</div>;
+
+  console.log(categories);
 
   return (
     <>
@@ -64,17 +59,14 @@ export default function Student() {
             </tr>
           </thead>
           <tbody>
-            {products.data.map((s) => {
-            return (
-              <tr key={s.id}>
-                <td>{s.id}</td>
-                <td>
-                  {renderImage(s)}
-                </td>
-                <td>{s.attributes.name}</td>
-                <td>{s.attributes.categories.data[0].attributes.name}</td>
-              </tr>
-            )
+            {categories?.map((s) => {
+              return (
+                <tr key={s.id}>
+                  <td>{s.id}</td>
+                  <td>{renderImage(s)}</td>
+                  <td>{s?.attributes.name}</td>
+                </tr>
+              );
             })}
           </tbody>
         </table>

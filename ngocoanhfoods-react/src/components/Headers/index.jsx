@@ -2,31 +2,20 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
 import logo from '../../assets/header/LOGO.jpg';
 import { useEffect, useState } from "react";
+import { getCategories } from "../../services/common/api/api-category";
 
 export default function Headers() {
+  const [categories, setCategories] = useState();
 
-  const [categories, setCategories] = useState({ data: [{ id: "1", attributes: { name: "p1" } }, { id: "2", attributes: { name: "p2" } }] });
+  useEffect(()=>{
+    getCategories().then((res)=>setCategories(res.data));
+  },[])
 
   const navigate = useNavigate();
 
-  // const cate = { data: [{ id: "1", attributes: { name: "p1" } }, { id: "2", attributes: { name: "p2" } }] }
-
-
-  // const fetchApi = async () => {
-  //   try {
-  //     const response = await fetch(getURLCategories);
-  //     const data = await response.json();
-  //     setCategories(data);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  useEffect(() => {
-    // fetchApi();
-  }, []);
-
-  // if (!categories) return <div>loading....</div>;
+  if(!categories) return <div>
+    <div class="loader"></div>
+  </div>
 
   return (
     <div className="wide-nav">
@@ -77,9 +66,9 @@ export default function Headers() {
                   </div>
                 </div>
                 <div className="dropdown-menu-content">
-                  {categories.data.map((cate) => (
+                  {categories.map((cate) => (
                     <div className="mt-3 mb-2 ps-3" key={cate.id}>
-                      <Link to={"/"}>{cate.attributes.name}</Link>
+                      <Link to={"/"}>{cate?.attributes?.name}</Link>
                     </div>
                   ))}
                 </div>
