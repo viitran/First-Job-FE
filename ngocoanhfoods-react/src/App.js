@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import HomePage from "./components/HomePage";
 import Master from "./components/Master";
 import Products from "./components/Products";
+import Detail from "./components/Detail";
 function App() {
   return (
     <>
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Master />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/detail" element={<Detail />} />
           </Route>
         </Routes>
       </BrowserRouter>

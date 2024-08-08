@@ -69,7 +69,7 @@ export default function Headers() {
               <div className="d-flex title-menu">
                 <p>Giới Thiệu</p>
               </div>
-              <div className="title-menu">
+              <div className="title-menu" onClick={()=>{navigate("/products")}}>
                 <div className="d-flex">
                   <p>Sản Phẩm</p>
                   <div className="d-flex justify-content-center align-items-center">
@@ -79,7 +79,7 @@ export default function Headers() {
                 <div className="dropdown-menu-content">
                   {categories.data.map((cate) => (
                     <div className="mt-3 mb-2 ps-3" key={cate.id}>
-                      <Link to={"/"}>{cate.attributes.name}</Link>
+                      <Link to={"/products"}>{cate.attributes.name}</Link>
                     </div>
                   ))}
                 </div>
