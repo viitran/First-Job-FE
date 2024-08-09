@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import HomePage from "./components/HomePage";
 import Master from "./components/Master";
 import Products from "./components/Products";
+<<<<<<< HEAD
 import Student from "./components/Student";
 import ProductCategory from "./components/Product";
 import Login from "./components/Auth/Login/login";
@@ -14,6 +15,9 @@ import { axiosClient } from "./services/common/axios-client";
 import Cart from "./components/Cart/index";
 
 export const UserContext = createContext(null);
+=======
+import Detail from "./components/Detail";
+>>>>>>> 26b0f74ef7e6108a4e84037d4a91e093764bfae4
 function App() {
   const [cookies, setCookie] = useCookies(["user"]);
   const [userInfo, setUserInfo] = useState();
@@ -66,6 +70,7 @@ function App() {
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
         />
       </Helmet>
+<<<<<<< HEAD
       <UserContext.Provider value={userInfo}>
         <BrowserRouter>
           <Routes>
@@ -83,6 +88,17 @@ function App() {
           </Routes>
         </BrowserRouter>
       </UserContext.Provider>
+=======
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Master />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/detail" element={<Detail />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+>>>>>>> 26b0f74ef7e6108a4e84037d4a91e093764bfae4
     </>
   );
 }
