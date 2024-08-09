@@ -41,6 +41,7 @@ import bl3 from "../../assets/homePage/blog/bi.jpg";
 import bl4 from "../../assets/homePage/blog/banh.jpg";
 import { useEffect, useRef, useState } from "react";
 import { getCategories } from "../../services/common/api/api-category";
+import { getSliders } from "../../services/common/api/global-api";
 
 export default function HomePage() {
   const categorySwiperRef = useRef();
@@ -49,6 +50,7 @@ export default function HomePage() {
   const [flagCerStatus, setFlagCerStatus] = useState(false);
   const [openCer, setOpenCer] = useState(false);
   const [categories, setCategories] = useState();
+  const [sliders, setSliders] = useState();
   const certification = [
     { id: "1c", url: c1 },
     { id: "2c", url: c2 },
@@ -79,7 +81,12 @@ export default function HomePage() {
     getCategories().then((res) => setCategories(res.data));
   }, []);
 
+  useEffect(() => {
+    getSliders().then((res) => setSliders(res.data));
+  }, []);
+
   if (!categories) return <div>loading..</div>;
+  if (!sliders) return <div>loading..</div>;
 
   return (
     <div className="homePage-container">
@@ -288,206 +295,41 @@ export default function HomePage() {
             },
           }}
         >
-          <SwiperSlide>
-            <div className="card-home-crs3">
-              <div className="col-9">
-                <div className="d-flex justify-content-center mb-5">
-                  <img src={crs31} alt="..." height="80px" />
-                </div>
-                <div>
-                  <p
-                    className="mb-4"
-                    style={{
-                      textAlign: "center",
-                      fontWeight: "bold",
-                      color: "#257140",
-                    }}
-                  >
-                    Không chất béo xấu
-                  </p>
-                  <p className="content-crs3">
-                    Ngọc Oanh Foods luôn cố gắng tận dụng tối đa nguồn chất béo
-                    tốt từ các loại hạt dinh dưỡng như hạt hạnh nhân, óc chó,
-                    macca, hạt dẻ, hạt điều, hạt bí, nho kho, quả nam việt
-                    quất,..
-                  </p>
-                  <Link
-                    to={"/a"}
-                    className="mt-3 mb-2"
-                    style={{ textAlign: "center", display: "block" }}
-                  >
-                    Tìm hiểu thêm &gt;
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card-home-crs3">
-              <div className="col-9">
-                <div className="d-flex justify-content-center mb-5">
-                  <img src={crs33} alt="..." height="80px" />
-                </div>
-                <div>
-                  <p
-                    className="mb-4"
-                    style={{
-                      textAlign: "center",
-                      fontWeight: "bold",
-                      color: "#257140",
-                    }}
-                  >
-                    Nguồn gốc xuất sứ rõ ràng
-                  </p>
-                  <p className="content-crs3">
-                    Nguồn nguyên liệu để sản xuất tại Ngọc Oanh Foods đều từ các
-                    sản phẩm có nguồn gốc xuất xứ rõ ràng, có giấy chứng nhận
-                    kiểm định chất lượng của Bộ Y tế.
-                  </p>
-                  <Link
-                    to={"/a"}
-                    className="mt-3 mb-2"
-                    style={{ textAlign: "center", display: "block" }}
-                  >
-                    Tìm hiểu thêm &gt;
-                  </Link>
+          {sliders.map((s) => (
+            <SwiperSlide key={s.id}>
+              <div className="card-home-crs3">
+                <div className="col-9">
+                  <div className="d-flex justify-content-center mb-5">
+                    <img
+                      src={`http://localhost:1337${s?.attributes.image.data.attributes.url}`}
+                      alt="..."
+                      height="80px"
+                    />
+                  </div>
+                  <div>
+                    <p
+                      className="mb-4"
+                      style={{
+                        textAlign: "center",
+                        fontWeight: "bold",
+                        color: "#257140",
+                      }}
+                    >
+                      {s?.attributes.name}
+                    </p>
+                    <p className="content-crs3">{s?.attributes.content}</p>
+                    <Link
+                      to={"/a"}
+                      className="mt-3 mb-2"
+                      style={{ textAlign: "center", display: "block" }}
+                    >
+                      Tìm hiểu thêm &gt;
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card-home-crs3">
-              <div className="col-9">
-                <div className="d-flex justify-content-center mb-5">
-                  <img src={crs32} alt="..." height="80px" />
-                </div>
-                <div>
-                  <p
-                    className="mb-4"
-                    style={{
-                      textAlign: "center",
-                      fontWeight: "bold",
-                      color: "#257140",
-                    }}
-                  >
-                    Không chất bảo quản
-                  </p>
-                  <p className="content-crs3">
-                    Các sản phẩm ngũ cốc, bánh gạo lứt, bánh cookie yến mạch,...
-                    mang thương hiệu Ngọc Oanh Foods đều cam kết 100% không sử
-                    dụng chất bảo quản hóa học ...
-                  </p>
-                  <Link
-                    to={"/a"}
-                    className="mt-3 mb-2"
-                    style={{ textAlign: "center", display: "block" }}
-                  >
-                    Tìm hiểu thêm &gt;
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card-home-crs3">
-              <div className="col-9">
-                <div className="d-flex justify-content-center mb-5">
-                  <img src={crs31} alt="..." height="80px" />
-                </div>
-                <div>
-                  <p
-                    className="mb-4"
-                    style={{
-                      textAlign: "center",
-                      fontWeight: "bold",
-                      color: "#257140",
-                    }}
-                  >
-                    Không chất béo xấu
-                  </p>
-                  <p className="content-crs3">
-                    Ngọc Oanh Foods luôn cố gắng tận dụng tối đa nguồn chất béo
-                    tốt từ các loại hạt dinh dưỡng như hạt hạnh nhân, óc chó,
-                    macca, hạt dẻ, hạt điều, hạt bí, nho kho, quả nam việt
-                    quất,..
-                  </p>
-                  <Link
-                    to={"/a"}
-                    className="mt-3 mb-2"
-                    style={{ textAlign: "center", display: "block" }}
-                  >
-                    Tìm hiểu thêm &gt;
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card-home-crs3">
-              <div className="col-9">
-                <div className="d-flex justify-content-center mb-5">
-                  <img src={crs33} alt="..." height="80px" />
-                </div>
-                <div>
-                  <p
-                    className="mb-4"
-                    style={{
-                      textAlign: "center",
-                      fontWeight: "bold",
-                      color: "#257140",
-                    }}
-                  >
-                    Nguồn gốc xuất sứ rõ ràng
-                  </p>
-                  <p className="content-crs3">
-                    Nguồn nguyên liệu để sản xuất tại Ngọc Oanh Foods đều từ các
-                    sản phẩm có nguồn gốc xuất xứ rõ ràng, có giấy chứng nhận
-                    kiểm định chất lượng của Bộ Y tế.
-                  </p>
-                  <Link
-                    to={"/a"}
-                    className="mt-3 mb-2"
-                    style={{ textAlign: "center", display: "block" }}
-                  >
-                    Tìm hiểu thêm &gt;
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="card-home-crs3">
-              <div className="col-9">
-                <div className="d-flex justify-content-center mb-5">
-                  <img src={crs32} alt="..." height="80px" />
-                </div>
-                <div>
-                  <p
-                    className="mb-4"
-                    style={{
-                      textAlign: "center",
-                      fontWeight: "bold",
-                      color: "#257140",
-                    }}
-                  >
-                    Không chất bảo quản
-                  </p>
-                  <p className="content-crs3">
-                    Các sản phẩm ngũ cốc, bánh gạo lứt, bánh cookie yến mạch,...
-                    mang thương hiệu Ngọc Oanh Foods đều cam kết 100% không sử
-                    dụng chất bảo quản hóa học ...
-                  </p>
-                  <Link
-                    to={"/a"}
-                    className="mt-3 mb-2"
-                    style={{ textAlign: "center", display: "block" }}
-                  >
-                    Tìm hiểu thêm &gt;
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </SwiperSlide>
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
 
@@ -543,7 +385,7 @@ export default function HomePage() {
                 <div
                   className="category-h"
                   onClick={() => {
-                    navigate("/to");
+                    navigate("/products");
                   }}
                 >
                   <div className="d-flex justify-content-center">
@@ -565,7 +407,7 @@ export default function HomePage() {
                   <div
                     className="category-h"
                     onClick={() => {
-                      navigate("/products");
+                      navigate(`/products-category/${cate?.attributes.name}`);
                     }}
                   >
                     <div className="d-flex justify-content-center">

@@ -1,60 +1,23 @@
-import { Link, useNavigate } from "react-router-dom";
-import "./Products.css";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import "./Product.css";
 import { useEffect, useState } from "react";
-import { getProducts } from "../../services/common/api/api-product";
 import { getCategories } from "../../services/common/api/api-category";
-import { axiosClient } from "../../services/common/axios-client";
-export default function Products() {
+import { getProductsByCategory } from "../../services/common/api/api-product";
+export default function ProductCategory() {
+  const params = useParams();
   const [products, setProducts] = useState();
-  const navigate = useNavigate();
   const [categories, setCategories] = useState();
+  const navigate = useNavigate();
+
+  const name = params.name.replace(/\s/g, "%20");
 
   useEffect(() => {
-    getProducts().then((res) => setProducts(res.data));
+    getProductsByCategory(name).then((res) => setProducts(res.data));
     getCategories().then((resp) => setCategories(resp.data));
-  }, []);
+  }, [name]);
 
-  const handleSelectChange = (e) => {
-    const { value } = e.target;
-    let sortBy = "";
-    let sortDirection = "";
-    switch (value) {
-      case "asc":
-        sortDirection = "ASC";
-        sortBy = "name";
-        break;
-      case "desc":
-        sortDirection = "DESC";
-        sortBy = "name";
-        break;
-      case "priceAsc":
-        sortDirection = "ASC";
-        sortBy = "price";
-        break;
-      case "priceDesc":
-        sortDirection = "DESC";
-        sortBy = "price";
-        break;
-      case "new":
-        sortDirection = "ASC";
-        sortBy = "createdAt";
-        break;
-      case "old":
-        sortDirection = "ASC";
-        sortBy = "createdAt";
-        break;
-      default:
-        break;
-    }
-    axiosClient
-      .get(`/san-phams?sort=${sortBy}:${sortDirection}`)
-      .then((res) => {
-        setProducts(res.data.data);
-      });
-  };
-
-  if (!products) return <div>loading..</div>;
-  if (!categories) return <div>loading..</div>;
+  if (!categories) return <div>loading...</div>;
+  if (!products) return <div>loading...</div>;
 
   return (
     <div className="container-fl">
@@ -74,12 +37,12 @@ export default function Products() {
                 <div className="filter-content" style={{ margin: "0px 30px" }}>
                   <p
                     onClick={() => {
-                      navigate("/all");
+                      navigate("/products");
                     }}
                   >
                     TẤT CẢ SẢN PHẨM
                   </p>
-                  {categories.map((cate) => (
+                  {categories?.map((cate) => (
                     <p
                       key={cate.id}
                       onClick={() => {
@@ -139,18 +102,14 @@ export default function Products() {
             >
               Sắp xếp
             </span>
-            <select
-              defaultValue="default"
-              className="sort-filter"
-              onChange={handleSelectChange}
-            >
+            <select defaultValue="default" className="sort-filter">
               <option value="default">Mặc định</option>
-              <option value="asc">A - Z</option>
-              <option value="desc">Z - A</option>
-              <option value="priceAsc">Giá tăng dần</option>
-              <option value="priceDesc">Giá giảm dần</option>
-              <option value="new">Hàng mới nhất</option>
-              <option value="old">Hàng cũ nhất</option>
+              <option value="">A - Z</option>
+              <option value="">Z - A</option>
+              <option value="">Giá tăng dần</option>
+              <option value="">Giá giảm dần</option>
+              <option value="">Hàng mới nhất</option>
+              <option value="">Hàng cũ nhất</option>
             </select>
           </div>
           <div className="product-list">
@@ -178,12 +137,7 @@ export default function Products() {
                     </Link>
                   </div>
                   <div>
-                    <p className="price-p">
-                      {new Intl.NumberFormat("vi-VN", {
-                        style: "currency",
-                        currency: "VND",
-                      }).format(p?.attributes.price)}
-                    </p>
+                    <p className="price-p">550.000đ</p>
                   </div>
                 </div>
               </div>
